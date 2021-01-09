@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Campgrounds</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Nature Campgrounds</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link" href="/addcampground">Add Campground</a>
+                <a class="nav-link" href="/adduser">Add User</a>
+                <a class="nav-link" href="/addtag">Add Tag</a>
+                <a class="nav-link" href="/users">View User</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row mt-3 mb-3 justify-content-around">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-center mt-3 mb-3">Create a New Campground Tag</h2>
+
+                    <form action="#" th:action="@{/createtag}" th:object="${tag}"
+                          method="POST">
+
+                        <label for="name" class="form-label mt-2 mb-2">Campground Tag Name("Eg: adventure")</label>
+                        <input type="text" th:field="*{name}"
+                               placeholder="Campground Tag Name" class="form-control " id="name" required>
+
+                        <button type="submit" class="btn btn-primary mt-3">Add Tag</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

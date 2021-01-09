@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Campground</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Nature Campgrounds</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link" href="/addcampground">Add Campground</a>
+                <a class="nav-link" href="/adduser">Add User</a>
+                <a class="nav-link" href="/addtag">Add Tag</a>
+                <a class="nav-link" href="/users">View User</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row mt-3 mb-3 justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="card row mt-3">
+                    <div class="card-body mt-3 mb-3">
+                        <h2 class="text-center">View Campground</h2>
+                        <div class="col mt-3 mb-3" th:object="${campgrounddetails}">
+
+                            <div class="card">
+                                <img th:src="${campgrounddetails.campground_img}" th:alt="${campgrounddetails.campground_name}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${campgrounddetails.campground_name}"></h5>
+                                    Author: <p class="badge badge-secondary" th:text="${campgrounddetails.userProfile.first_name} +' '+${campgrounddetails.userProfile.last_name}"></p>
+                                    <p class="card-text" th:text="${campgrounddetails.campground_desc}"></p>
+
+                                    <p>
+                                        <th:block th:each="t: ${campgrounddetails.tags}">
+                                            <span class="badge badge-info" th:text="${t.name}"></span>
+                                        </th:block>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+</div>
+</body>
+</html>

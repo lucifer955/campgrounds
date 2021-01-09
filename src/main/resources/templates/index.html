@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Campgrounds</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Nature Campgrounds</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link" href="/addcampground">Add Campground</a>
+                <a class="nav-link" href="/adduser">Add User</a>
+                <a class="nav-link" href="/addtag">Add Tag</a>
+                <a class="nav-link" href="/users">View User</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="jumbotron mt-3 mb-3">
+        <h1 class="display-4">Nature Campgrounds</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary" href="/addcampground">Add Campground</a>
+    </div>
+    <hr class="my-4 mt-2 mb-2"/>
+    <div class="row mt-3 mb-3 justify-content-around" th:object="${campgroundlist}">
+        <th:block th:each="list : ${campgroundlist}">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img th:src="${list.campground_img}" th:alt="${list.campground_name}" class="card-img-top" >
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${list.campground_name}"></h5>
+                        Author: <p class="badge badge-secondary" th:text="${list.userProfile.first_name} +' '+${list.userProfile.last_name}"></p>
+                        <p class="card-text" th:text="${#strings.abbreviate(list.campground_desc,150)}"></p>
+                        <p>
+                            <th:block th:each="t: ${list.tags}">
+                                <span class="badge badge-info" th:text="${t.name}"></span>
+                            </th:block>
+                        </p>
+
+                        <a th:href="@{'/campground/' + ${list.id}}" class="btn btn-primary">View Campground</a>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+
+    </div>
+</div>
+</body>
+</html>

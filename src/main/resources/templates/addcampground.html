@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Campgrounds</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Nature Campgrounds</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link" href="/addcampground">Add Campground</a>
+                <a class="nav-link" href="/adduser">Add User</a>
+                <a class="nav-link" href="/addtag">Add Tag</a>
+                <a class="nav-link" href="/users">View User</a>
+            </div>
+        </div>
+    </div>
+</nav>
+    <div class="container">
+        <div class="row mt-3 mb-3 justify-content-around">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center mt-3 mb-3">Add New Campground</h2>
+
+                        <form action="#" th:action="@{/createcampground}" th:object="${campground}"
+                              method="POST">
+                            <label for="campground_name" class="form-label mt-2 mb-1">Campground Name</label>
+                            <input type="text" th:field="*{campground_name}"
+                                   placeholder="Campground Name" class="form-control" id="campground_name" required/>
+
+                            <label for="campground_image" class="form-label mt-2 mb-1">Campground Image</label>
+                            <input type="text" th:field="*{campground_img}"
+                                   placeholder="Campground Image" class="form-control " id="campground_image" required/>
+
+                            <label for="campground_desc" class="form-label mt-2 mb-1">Campground Description</label>
+                            <textarea type="text" th:field="*{campground_desc}"
+                                   placeholder="Campground Description" class="form-control" id="campground_desc" required/>
+
+
+                                <label  for="mod_id" class="form-label mt-2 mb-1">Moderator Id </label>
+                                <select  id="mod_id"  th:field="*{userProfile}" class="form-control" required>
+                                    <option value="" th:disabled="disabled" th:selected="selected">
+                                        Choose your option
+                                    </option>
+                                    <th:block th:each="list : ${userProfileList}">
+                                        <option th:text="${list.first_name} + ' ' + ${list.last_name}" th:value="${list.id}"/>
+                                    </th:block>
+                                </select>
+
+                            <label  for="tag_1" class="form-label mt-2 mb-1">Select 1st Tag</label>
+                            <select  id="tag_1"  th:field="*{tags}" class="form-control" >
+                                <option value="" th:disabled="disabled" th:selected="selected">
+                                    Choose your option
+                                </option>
+                                <th:block th:each="list1 : ${tagList}">
+                                    <option th:text="${list1.name}" th:value="${list1.id}"/>
+                                </th:block>
+                            </select>
+
+                            <label  for="tag_2" class="form-label mt-2 mb-1">Select 2st Tag</label>
+                            <select  id="tag_2"  th:field="*{tags}" class="form-control" >
+                                <option value="" th:disabled="disabled" th:selected="selected">
+                                    Choose your option
+                                </option>
+                                <th:block th:each="list2 : ${tagList}">
+                                    <option th:text="${list2.name}" th:value="${list2.id}"/>
+                                </th:block>
+                            </select>
+
+                            <button type="submit" class="btn btn-primary mt-3">Add Campground</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
