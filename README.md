@@ -16,5 +16,5 @@ A simple web application using springboot hibernate mysql jpa and thymeleaf
   * create a database <b>campground</b>
   * if you are using intellij or sts it will automatically download the dependencies when you open the project
   * run the project
-  * visit [localhost:8080](localhost:8080)
+  * visit [localhost:8080](http://localhost:8080/)
 
