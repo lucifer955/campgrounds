@@ -9,7 +9,7 @@ A simple web application using springboot hibernate mysql jpa and thymeleaf
   * springboot
   * hibernate
   * mysql
-  * Themyleaf
+  * Thymeleaf
   
 ## steps to run the project
   * clone the repository
