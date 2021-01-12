@@ -18,3 +18,4 @@ A simple web application using springboot hibernate mysql jpa and thymeleaf
   * run the project
   * visit [localhost:8080](http://localhost:8080/)
 
+![alt text](https://github.com/lucifer955/campgrounds/blob/images/screencapture.png?raw=true)
