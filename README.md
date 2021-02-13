@@ -3,7 +3,7 @@ A simple web application using springboot hibernate mysql jpa and thymeleaf
 
 ## Table of contents
 * [Used Technologies](#used-technologies)
-* [Graphing and Visualizations Libraries](#steps-to-run-the-project)
+* [Steps to run the project](#steps-to-run-the-project)
 
 ## Used Technologies
   * springboot
